@@ -36,8 +36,11 @@
         let chk=$("#chk").val();
         $.get("./api/chkAns.php", {chk}, (res) => {
             if (parseInt(res) == 1) {
-                $.get("./api/chkPw.php",{acc:$("#acc").val(),pw:$("#pw").val()},(res)=>{
-                    location.href="?";
+                $.get("./api/chkPw.php",{acc:$("#acc").val(),pw:$("#pw").val(),table:"User"},(res)=>{
+                    if (parseInt(res)) {
+                        location.href="?";
+                        
+                    }
                 })
 
                     } else {

@@ -39,8 +39,19 @@
                                         echo "</a>";
                                 }
                                 ?>
-                                </a> |
-                                <a href="?do=admin">管理登入</a>
+                                |
+                                <?php
+                                if (isset($_SESSION['admin'])) {
+                                        echo "<a href='back.php'>";
+                                        echo "返回管理";
+                                        echo "</a>";
+
+                                } else {
+                                        echo "<a href='?do=admin'>";
+                                        echo "管理登入";
+                                        echo "</a>";
+                                }
+                                ?>
                         </div>
                         <marquee>年終特賣會開跑了&nbsp;&nbsp;情人節特惠活動&nbsp;&nbsp;</marquee>
                 </div>

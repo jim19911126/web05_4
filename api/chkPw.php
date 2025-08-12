@@ -1,14 +1,24 @@
 <?php include_once "db.php";
+$table=$_GET['table'];
+unset($_GET['table']);
 
 
-$chk=$User->count($_GET);
+$chk = $$table->count($_GET);
 
 
 if ($chk) {
     echo 1; //帳號已被使用
-    $_SESSION['login']=$_GET['acc'];
+    switch ($table) {
+        case 'User':
+            # code...    
+            $_SESSION['login'] = $_GET['acc'];
+            break;
+            case 'Admin':
+            $_SESSION['admin'] = $_GET['acc'];
+            break;
+    }
     # code...
-}else {
+} else {
     echo 0; //帳號可使用
 }
 
