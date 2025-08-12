@@ -8,6 +8,7 @@
         <td class="tt ct">帳號</td>
         <td class="pp"><input type="text" name="acc" id="acc">
             <button>檢測帳號</button>
+            
         </td>
 
     </tr>
@@ -33,3 +34,18 @@
     <button>註冊</button>
     <button>重置</button>
 </div>
+
+<script>
+    function chkAcc(params) {
+        let acc = $("#acc").val();
+        $.get("./api/chkAcc.php",{acc},(res)=>{
+            if (parseInt(res)>0 || acc=='admin') {
+                alert("帳號已存在");
+                
+            }else{
+                alert("帳號可用");
+            }
+        })
+        
+    }
+</script>
