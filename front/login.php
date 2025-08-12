@@ -36,10 +36,12 @@
         let chk=$("#chk").val();
         $.get("./api/chkAns.php", {chk}, (res) => {
             if (parseInt(res) == 1) {
-                alert("驗證成功");
+                $.get("./api/chkPw.php",{acc:$("#acc").val(),pw:$("#pw").val()},(res)=>{
+                    location.href="?";
+                })
 
                     } else {
-                        alert("驗證失敗");
+                        alert("對不起 您的驗證碼有誤 請重新輸入");
                     }
                 })
     }
