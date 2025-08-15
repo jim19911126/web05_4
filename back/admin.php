@@ -5,9 +5,23 @@
         <td>姓名</td>
         <td>管理</td>
     </tr>
-    <tr class="pp ct">
-        <td></td>
-        <td></td>
-        <td></td>
-    </tr>
+    <?php
+    $admins = $Admin->all();
+    foreach ($admins as $admin):
+        ?>
+        <tr class="pp ct">
+            <td><?=$admin['acc'];?></td>
+            <td><?=str_repeat("*", mb_strlen($admin['pw'])); ?></td>
+            <td>
+                <?php if ($admin['acc'] != 'admin'): ?>
+                    <button data-id="<?= $admin['id'];?>" onclick="location.href='?do=edit_admin&id=<?= $admin['id'];?>'">修改</button>
+                    <button data-id="<?= $admin['id'];?>">刪除</button>
+                <?php else: ?>
+                    此帳號為最高權限
+                <?php endif; ?>
+            </td>
+        </tr>
+    <?php endforeach; ?>
 </table>
+
+ <div class="ct"><button onclick="location.href='index.php'">返回</button></div>
