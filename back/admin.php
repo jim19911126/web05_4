@@ -15,7 +15,7 @@
             <td>
                 <?php if ($admin['acc'] != 'admin'): ?>
                     <button data-id="<?= $admin['id'];?>" onclick="location.href='?do=edit_admin&id=<?= $admin['id'];?>'">修改</button>
-                    <button data-id="<?= $admin['id'];?>">刪除</button>
+                    <button class="del-btn" data-id="<?= $admin['id'];?>">刪除</button>
                 <?php else: ?>
                     此帳號為最高權限
                 <?php endif; ?>
@@ -25,3 +25,14 @@
 </table>
 
  <div class="ct"><button onclick="location.href='index.php'">返回</button></div>
+
+ <script>
+    $(".del-btn").click(function () {
+        let id = $(this).data("id");
+        if (confirm("確定要刪除嗎?")) {
+            $.post("./api/del.php", {table: "Admin", id}, () => {
+                location.reload();
+            });
+        }
+    });
+ </script>
