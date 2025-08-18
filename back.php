@@ -41,7 +41,7 @@ $super_pr=unserialize($super['pr']);
 				echo (in_array(1,$super_pr))?"<a href='?do=th'>商品分類與管理</a>":'';
 				echo (in_array(2,$super_pr))?"<a href='?do=order'>訂單管理</a>":'';
 				echo (in_array(3,$super_pr))?"<a href='?do=mem'>會員管理</a>":'';
-				echo (in_array(4,$super_pr))?"<a href='?do=bot'>頁尾版權管理</a>":'';
+				echo (in_array(4,$super_pr))?"<a href='?do=btm'>頁尾版權管理</a>":'';
 				echo (in_array(5,$super_pr))?"<a href='?do=news'>最新消息管理</a>":'';
 				?>
 				<a href="./api/logout.php" style="color:#f00;">登出</a>
