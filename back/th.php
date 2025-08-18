@@ -10,7 +10,7 @@
     新增中分類
     <select name="selBig" id="selBig"></select>
     <input type="text" name="mid" id="mid">
-    <button>新增</button>
+    <button onclick="addMid()">新增</button>
 </div>
 
 <table class="all">
@@ -39,6 +39,15 @@
         $.post("./api/save_type.php", { name, big_id:0 }, function() {
             $("#big").val("");
             getBigs();
+        });
+    }
+
+    function addMid(params) {
+        let name = $("#mid").val();
+        let big_id = $("#selBig").val();
+
+        $.post("./api/save_type.php", { name, big_id }, function() {
+            location.reload();
         });
     }
 
