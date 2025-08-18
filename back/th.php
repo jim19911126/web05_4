@@ -31,11 +31,20 @@
 </table>
 
 <script>
+
+    getBigs();
     function addBig(params) {
         let name = $("#big").val();
 
         $.post("./api/save_type.php", { name, big_id:0 }, function() {
-            location.reload();
+            $("#big").val("");
+            getBigs();
+        });
+    }
+
+    function getBigs(params) {
+        $.get("./api/get_bigs.php", (options) => {
+            $("#selBig").html(options);
         });
     }
 </script>
