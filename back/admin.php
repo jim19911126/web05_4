@@ -2,7 +2,7 @@
 <table class="all">
     <tr class="tt ct">
         <td>帳號</td>
-        <td>姓名</td>
+        <td>密碼</td>
         <td>管理</td>
     </tr>
     <?php
