@@ -45,7 +45,7 @@ $item = $Item->find($_GET['id']);
     <tr>
         <td class="tt ct">商品介紹</td>
         <td class="pp">
-            <textarea name="intro" id="intro" style="width: 200px; height: 75px;"></textarea>
+            <textarea name="intro" id="intro" style="width: 200px; height: 75px;"><?= $item['intro'] ?></textarea>
         </td>
     </tr>
 </table>
