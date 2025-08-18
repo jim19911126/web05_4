@@ -14,20 +14,37 @@
 </div>
 
 <table class="all">
-    <tr class="tt">
-        <td>女用皮件</td>
-        <td class="ct">
-            <button>修改</button>
-            <button>刪除</button>
-        </td>
-    </tr>
-    <tr class="pp ct">
-        <td>男用皮件</td>
-        <td>
-            <button>修改</button>
-            <button>刪除</button>
-        </td>
-    </tr>
+
+    <?php
+    $bigs = $Type->all(['big_id' => 0]);
+    foreach ($bigs as $big):
+        ?>
+        <tr class="tt">
+            <td><?= $big['name'] ?></td>
+            <td class="ct">
+                <button class="edit-btn" data-id="<?= $big['id'] ?>">修改</button>
+                <button class="del-btn" data-id="<?= $big['id'] ?>">刪除</button>
+            </td>
+        </tr>
+
+        <?php
+        if ($Type->count(['big_id' => $big['id']]) > 0):
+            $mids = $Type->all(['big_id' => $big['id']]);
+            foreach ($mids as $mid):
+                ?>
+                <tr class="pp ct">
+                    <td><?= $mid['name'] ?></td>
+                    <td>
+                        <button class="edit-btn" data-id="<?= $mid['id'] ?>">修改</button>
+                        <button class="del-btn" data-id="<?= $mid['id'] ?>">刪除</button>
+                    </td>
+                </tr>
+
+                <?php
+            endforeach;
+        endif;
+    endforeach;
+    ?>
 </table>
 
 <script>
@@ -36,7 +53,7 @@
     function addBig(params) {
         let name = $("#big").val();
 
-        $.post("./api/save_type.php", { name, big_id:0 }, function() {
+        $.post("./api/save_type.php", { name, big_id: 0 }, function () {
             $("#big").val("");
             getBigs();
         });
@@ -46,7 +63,7 @@
         let name = $("#mid").val();
         let big_id = $("#selBig").val();
 
-        $.post("./api/save_type.php", { name, big_id }, function() {
+        $.post("./api/save_type.php", { name, big_id }, function () {
             location.reload();
         });
     }
@@ -56,6 +73,14 @@
             $("#selBig").html(options);
         });
     }
+    $(".del-btn").click(function () {
+        let id = $(this).data("id");
+        if (confirm("確定要刪除此分類嗎?")) {
+            $.post("./api/del.php", { id, table: "Type" }, () => {
+                location.reload();
+            });
+        }
+    });
 </script>
 
 <h2 class="ct">商品管理</h2>
