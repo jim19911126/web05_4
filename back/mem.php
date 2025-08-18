@@ -7,21 +7,37 @@
         <td>操作</td>
     </tr>
     <?php
-    $mems=$User->all();
+    $mems = $User->all();
     foreach ($mems as $mem):
 
-    ?>
-    <tr class="pp ct">
-        <td><?=$mem['name'];?></td>
-        <td><?=$mem['acc'];?></td>
-        <td><?=$mem['reg_date'];?></td>
-        <td>
-            <button class="edit-btn" data-id="<?=$mem['id'];?>">修改</button>
-            <button class="del-btn" data-id="<?=$mem['id'];?>">刪除</button>
-        </td>
-    </tr>
-    <?php
+        ?>
+        <tr class="pp ct">
+            <td><?= $mem['name']; ?></td>
+            <td><?= $mem['acc']; ?></td>
+            <td><?= $mem['reg_date']; ?></td>
+            <td>
+                <button class="edit-btn" data-id="<?= $mem['id']; ?>">修改</button>
+                <button class="del-btn" data-id="<?= $mem['id']; ?>">刪除</button>
+            </td>
+        </tr>
+        <?php
     endforeach;
 
     ?>
 </table>
+<script>
+    $(".del-btn").click(function () {
+        let id = $(this).data("id");
+        if (confirm("確定要刪除此會員嗎?")) {
+            $.post("./api/del.php", { id, table: "User" }, () => {
+                location.reload();
+            });
+        }
+    })
+    $(".edit-btn").on("click", function () {
+        let id = $(this).data("id");
+        // 這裡可以打開一個編輯的對話框，讓使用者修改分類名稱
+        location.href = `?do=edit_user&id=${id}`;
+
+    });
+</script>
