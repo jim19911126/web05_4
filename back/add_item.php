@@ -36,7 +36,9 @@
     </tr>
     <tr>
         <td class="tt ct">商品圖片</td>
-        <td class="pp"><input type="text" name="image" id="image"></td>
+        <td class="pp">
+            <input type="file" name="img" id="img">
+        </td>
     </tr>
     <tr>
         <td class="tt ct">商品介紹</td>
@@ -48,6 +50,51 @@
 <div class="ct">
     <input type="submit" value="新增">
     <input type="reset" value="重置">
-    <input type="button" value="返回" onclick="history.back()">
+    <input type="button" value="返回" onclick="location.href='?do=th'">
 </div>
 </form>
+
+<!-- <script>
+getBigs();
+
+function getBigs(){
+    $.get("./api/get_bigs.php", (bigs) => {
+        $("#big").html(bigs);
+        getMids();
+    });
+}    
+
+function getMids(){
+    let bigId=$("#big").val();
+    $.get("./api/get_mids.php",{bigId},(mids)=>{
+        $("#mid").html(mids);
+    })
+}
+
+$("#big").on("change",()=>{
+    getMids();
+})
+
+
+</script> -->
+
+ <script>
+    getBigs();
+function getBigs(params) {
+    $.get("./api/get_bigs.php", params, function (bigs) {
+        $("#big").html(bigs);
+        getMids();
+    });
+}
+
+function getMids(params) {
+    let bigId = $("#big").val();
+    $.get("./api/get_mids.php", {bigId}, function (mids) {
+        $("#mid").html(mids);
+    });
+}
+
+$('#big').change(function () {
+    getMids();
+});
+</script> 
