@@ -64,7 +64,7 @@ body
 }
 .all td
 {
-	min-width:100px;
+	min-width:50px;
 	padding:10px;
 }
 .tt
@@ -83,7 +83,7 @@ body
 {
 	background:#EFCA85;
 }
-input[type=text],input[type=password],input[type=submit],button,.button,input[type=reset],input[type=button],select，textarea,input[type=number]
+input[type=text],input[type=password],input[type=submit],button,.button,input[type=reset],input[type=button],select,textarea,input[type=number]
 {
 	background:#F3F3F3;
 	border:#CCC 1px solid;
@@ -97,9 +97,14 @@ input[type=text],input[type=password]
 {
 	width:170px;
 }
-#left .s
+
+.s
 {
 	display:none;
+}
+#left .s a
+{
+	background:lightgreen;
 }
 div.ww:hover > div.s
 {
@@ -109,3 +114,7 @@ div.ww:hover > div.s
 {
 	font-size:12px;
 }
+
+/* #left .ww .s { display: none; }
+#left .ww:hover .s { display: block !important; }
+#left .ww .s a { display: block; background: lightgreen; } */

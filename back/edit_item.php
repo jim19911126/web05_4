@@ -39,7 +39,7 @@ $item = $Item->find($_GET['id']);
     <tr>
         <td class="tt ct">商品圖片</td>
         <td class="pp">
-            <input type="file" name="img" id="img">
+            <input type="file" name="img" id="img" value="<?=$item['img'];?>">
         </td>
     </tr>
     <tr>
@@ -50,7 +50,8 @@ $item = $Item->find($_GET['id']);
     </tr>
 </table>
 <div class="ct">
-    <input type="submit" value="新增">
+        <input type="hidden" name="id" value="<?=$item['id'];?>">
+    <input type="submit" value="修改">
     <input type="reset" value="重置">
     <input type="button" value="返回" onclick="location.href='?do=th'">
 </div>
