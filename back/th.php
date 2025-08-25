@@ -22,7 +22,7 @@
         <tr class="tt">
             <td><?= $big['name'] ?></td>
             <td class="ct">
-                <button class="edit-btn" data-id="<?= $big['id'] ?>">修改</button>
+                <button class="type-edit-btn" data-id="<?= $big['id'] ?>">修改</button>
                 <button class="del-btn" data-id="<?= $big['id'] ?>">刪除</button>
             </td>
         </tr>
@@ -35,7 +35,7 @@
                 <tr class="pp ct">
                     <td><?= $mid['name'] ?></td>
                     <td>
-                        <button class="edit-btn" data-id="<?= $mid['id'] ?>">修改</button>
+                        <button class="type-edit-btn" data-id="<?= $mid['id'] ?>">修改</button>
                         <button class="del-btn" data-id="<?= $mid['id'] ?>">刪除</button>
                     </td>
                 </tr>
@@ -96,8 +96,7 @@
 
 <h2 class="ct">商品管理</h2>
 <div class="ct">
-    <button>新增商品</button>
-    <select name="" id="">新增商品</select>
+    <button onclick="location.href='?do=add_item'">新增商品</button>
 </div>
 
 <table class="all">
