@@ -128,5 +128,6 @@ $Type=new DB("type");
 $Btm=new DB("btm");
 $User=new DB("user");
 $Item=new DB("item");
+$Order=new DB("orders");
 
 ?>
